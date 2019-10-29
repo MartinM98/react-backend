@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pw.react.backend.reactbackend.Repositories.UserRepository;
 import pw.react.backend.reactbackend.Model.User;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,12 +21,38 @@ public class UserService{
     }
 
 
-    public void saveUser(String login,String firstName,String lastName)
+    public void saveUser(User user)
     {
-        repository.save(new User(login,firstName,lastName));
+        repository.saveAndFlush(user);
     }
 
-    public boolean checkUser(String login)
+    public boolean checkIfUserExists2(User user)
+    {
+        List<User> list=repository.findAllByLogin(user.getLogin());
+
+        if(list.isEmpty()) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+public String deleteUserService(String login)
+{
+    User user=repository.findOneByLogin(login);
+    if(user!=null) {
+        repository.delete(user);
+        return "User deleted";
+    }
+    else
+    {
+        return "User doesn't exist";
+    }
+}
+
+    public boolean checkIfUserExists(String login)
     {
         List<User> list=repository.findAllByLogin(login);
         if(list.isEmpty()) {
