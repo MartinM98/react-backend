@@ -12,29 +12,33 @@ import java.util.Date;
 //@JsonIgnoreProperties("hibernateLazyInitializer","handler")
 public class User implements Serializable {
 
-    private static final long serialVersionUID=9237468364276483L;
+    private static final long serialVersionUID=-2343243243242432341L;
     //public static pw.react.backend.reactbackend.Model.User EMPTY=new pw.react.backend.reactbackend.Model.User();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
-    @Column(name="login")
+    private int id;
+
+    @Column(name = "login")
     private String login;
-    @Column(name="[first name]")
-    private String firstname;
-    @Column(name="[last name]")
-    private String lastname;
-    @Column(name="[date of birth]")
-    private Date dateofbirth;
-    @Column(name="active")
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    @Column(name = "active")
     private boolean active;
 
 
     public long getID(){
         return id;
     }
-    public void setID(long id)
+    public void setID(int id)
     {
         this.id=id;
     }
@@ -46,25 +50,25 @@ public class User implements Serializable {
         this.login=login;
     }
     public String getfirstName(){
-        return firstname;
+        return firstName;
     }
-    public void setfirstName(String firstname)
+    public void setfirstName(String firstName)
     {
-        this.firstname=firstname;
+        this.firstName=firstName;
     }
     public String getlastName(){
-        return lastname;
+        return lastName;
     }
-    public void setlastName(String lastname)
+    public void setlastName(String lastName)
     {
-        this.lastname=lastname;
+        this.lastName=lastName;
     }
     public Date getdateOfBirth(){
-        return dateofbirth;
+        return dateOfBirth;
     }
-    public void setDateOfBirth(Date dateofbirth)
+    public void setDateOfBirth(Date dateOfBirth)
     {
-        this.dateofbirth=dateofbirth;
+        this.dateOfBirth=dateOfBirth;
     }
     public boolean getActive(){
         return active;
@@ -78,17 +82,14 @@ public class User implements Serializable {
     {
 
     }
-    public User(String login,String firstname,String lastname)
+    public User(String login,String firstName,String lastName,Date dateOfBirth,boolean active )
     {
         this.login=login;
-        this.firstname=firstname;
-        this.lastname=lastname;
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.dateOfBirth=dateOfBirth;
+        this.active=active;
     }
-    public User(String login)
-    {
-        this.login=login;
-    }
-
 
 
 }
