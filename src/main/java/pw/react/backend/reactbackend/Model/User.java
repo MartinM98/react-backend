@@ -15,7 +15,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @Column
     private String login;
@@ -92,6 +92,16 @@ public class User implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.active = active;
     }
+
+    public void setAll(User user)
+    {
+        this.login = user.getLogin();
+        this.firstName = user.getfirstName();
+        this.lastName = user.getlastName();
+        this.dateOfBirth = user.getdateOfBirth();
+        this.active = user.getActive();
+    }
+
 
     @Override
     public String toString() {

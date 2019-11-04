@@ -31,10 +31,17 @@ public class UserController
 
     }
 
+
     @GetMapping("/{Login}")
     public ResponseEntity<User> check(@PathVariable String Login)
     {
     return userService.checkUser(Login);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@PathVariable long id,@Valid @RequestBody User user)
+    {
+        return userService.updateUser(id,user);
     }
 
 
