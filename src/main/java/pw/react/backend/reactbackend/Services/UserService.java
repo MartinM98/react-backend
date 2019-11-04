@@ -81,6 +81,22 @@ public class UserService {
     }
 
 
+    public ResponseEntity<String> deleteUser(long id)
+    {
+        Optional<User> us=repository.findById(id);
+        if(us.isPresent())
+        {
+            repository.deleteById(id);
+            return ResponseEntity.ok("User with the id: "+id+"is deleted");
+        }
+        else
+        {
+            throw new UserNotFound("Id: + "+id);
+        }
+
+    }
+
+
     @ExceptionHandler({UserNotFound.class})
     public ResponseEntity<ErrorMessage> noEntry(UserNotFound ex) {
         return new ResponseEntity<>(
