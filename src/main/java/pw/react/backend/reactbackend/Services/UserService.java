@@ -42,7 +42,7 @@ public class UserService {
                 .orElseGet( () -> ResponseEntity.notFound().build() );
     }
 
-    private void checkLogins(String login1,String login2)
+    void checkLogins(String login1,String login2)
     {
         if(login1==login2)
         {

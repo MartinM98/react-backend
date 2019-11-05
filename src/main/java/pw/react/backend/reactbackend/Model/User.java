@@ -93,8 +93,7 @@ public class User implements Serializable {
         this.active = active;
     }
 
-    public void setAll(User user)
-    {
+    public void setAll(User user) {
         this.login = user.getLogin();
         this.firstName = user.getfirstName();
         this.lastName = user.getlastName();
@@ -105,7 +104,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="+dateOfBirth+",active"+active;
+        return "User id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ",active" + active;
     }
 
 }

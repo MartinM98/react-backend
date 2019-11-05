@@ -21,5 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     <S extends User> S save(S s);
 
     @Override
+    boolean existsById(Long aLong);
+
+    @Override
     void deleteById(Long aLong);
 }
